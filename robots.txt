@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://priem5.com/sitemap.xml
