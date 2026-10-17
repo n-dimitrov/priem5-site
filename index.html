@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Прием в 5. клас в София – Прием5</title>
-<meta name="description" content="Прием5: независим помощник за прием в 5. клас в София. Училища с прием след 4. клас, признати състезания и коефициенти, срокове, калкулатор на бала. Отваряме скоро.">
+<meta name="description" content="Прием5: независим помощник за прием в 5. клас в София. Справочник на всички училища в София: прием в 5. клас, адрес и карта. Скоро: признати състезания, срокове и калкулатор на бала.">
 <link rel="canonical" href="https://priem5.com/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
@@ -12,14 +12,14 @@
 <meta property="og:locale" content="bg_BG">
 <meta property="og:url" content="https://priem5.com/">
 <meta property="og:title" content="Прием5 – прием в 5. клас в София">
-<meta property="og:description" content="Училища, признати състезания, срокове и калкулатор на бала за прием в 5. клас в София. Отваряме скоро.">
+<meta property="og:description" content="Училища, признати състезания, срокове и калкулатор на бала за прием в 5. клас в София. Справочникът на училищата е отворен.">
 <meta property="og:image" content="https://priem5.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Прием5 – отваряме скоро">
+<meta property="og:image:alt" content="Прием5 – справочникът на училищата е отворен">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Прием5 – прием в 5. клас в София">
-<meta name="twitter:description" content="Училища, признати състезания, срокове и калкулатор на бала за прием в 5. клас в София. Отваряме скоро.">
+<meta name="twitter:description" content="Училища, признати състезания, срокове и калкулатор на бала за прием в 5. клас в София. Справочникът на училищата е отворен.">
 <meta name="twitter:image" content="https://priem5.com/og-image.png">
 <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -56,6 +56,7 @@
 <style>
 :root{
   --navy:#1C2C5B; --gold:#E8B64A; --ink:#141C33; --muted:#A9B1CC; --line:rgba(255,255,255,0.14);
+  --ink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.3 1 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -64,25 +65,38 @@ body{
   display:flex; flex-direction:column; min-height:100vh;
 }
 main{
-  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:48px 16px; gap:40px;
+  flex:1; width:100%; max-width:1040px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:48px 16px; gap:28px;
 }
-.logo{width:min(420px,80vw); height:auto}
-.tagline{margin:0; font-size:clamp(16px,2.4vw,22px); font-weight:600; color:#D5DAEA; max-width:36ch; line-height:1.4}
-.stamp{
-  display:inline-block; padding:14px 28px; border:6px solid var(--gold); border-radius:14px;
-  color:var(--gold); font-weight:900; font-size:clamp(28px,7vw,72px); letter-spacing:0.04em; text-transform:uppercase;
-  line-height:1; transform:rotate(-7deg); position:relative;
-  box-shadow:0 0 0 3px var(--navy), 0 0 0 5px var(--gold);
-  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.15 1 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.15 1 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  mask-size:300px 300px; -webkit-mask-size:300px 300px;
-}
+.logo{width:min(340px,70vw); height:auto}
+h1{margin:0; font-size:clamp(30px,5vw,44px); font-weight:900; line-height:1.1; max-width:20ch}
+.lede{margin:0; font-size:clamp(16px,2.2vw,19px); font-weight:500; color:#D5DAEA; max-width:44ch; line-height:1.5}
+.actions{display:flex; flex-wrap:wrap; justify-content:center; gap:12px}
+.btn{display:inline-flex; align-items:center; min-height:48px; padding:0 24px; border-radius:10px; font-weight:800; font-size:16px; text-decoration:none}
+.btn.gold{background:var(--gold); color:var(--navy)}
+.btn.gold:hover{background:#F0C66A}
+.btn.line{border:1px solid rgba(255,255,255,0.35); color:#fff; font-weight:700}
+.btn.line:hover{border-color:#fff}
+.btn:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
 .what{
-  margin:0; display:flex; flex-wrap:wrap; justify-content:center; gap:8px 12px; padding:0; list-style:none;
-  font-size:14px; font-weight:600; color:#D5DAEA;
+  margin:12px 0 0; padding:0; list-style:none; width:100%; text-align:left;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px 12px;
 }
-.what li{padding:8px 14px; border:1px solid var(--line); border-radius:999px}
+.what li{position:relative; padding:18px 18px 20px; border:1px solid var(--line); border-radius:12px; display:flex; flex-direction:column; gap:6px}
+.what li.open{border:2px solid var(--gold)}
+.what b{font-size:16px}
+.what span{font-size:14px; color:#D5DAEA}
+.what .status{font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--gold)}
+.what li.open a{color:inherit; text-decoration:none}
+.what li.open a::after{content:""; position:absolute; inset:0; border-radius:12px}
+.what li.open:hover{background:rgba(255,255,255,0.04)}
+.what li.soon b{margin-top:18px}
+.what .stamp{
+  position:absolute; top:-12px; right:12px; padding:3px 9px; border:3px solid var(--gold); border-radius:7px;
+  color:var(--gold); background:var(--navy); font-size:13px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; line-height:1.2;
+  transform:rotate(-7deg); box-shadow:0 0 0 2px var(--navy), 0 0 0 3px var(--gold);
+  mask-image:var(--ink); -webkit-mask-image:var(--ink); mask-size:120px 120px; -webkit-mask-size:120px 120px;
+}
 footer{
   padding:20px 16px 28px; text-align:center; font-size:13px; color:var(--muted); line-height:1.6;
   border-top:1px solid var(--line);
@@ -92,13 +106,17 @@ footer{
 <body>
 <main>
   <img class="logo" src="logo-horizontal-white.svg" alt="Прием5" width="717" height="192">
-  <p class="tagline">Независим помощник за родители на четвъртокласници в София, които кандидатстват за 5. клас.</p>
-  <div class="stamp" role="img" aria-label="Отваряме скоро">Отваряме скоро</div>
-  <ul class="what" aria-label="Какво ще намерите тук">
-    <li>Училища с прием в 5. клас</li>
-    <li>Кое състезание къде се признава</li>
-    <li>Срокове и напомняния</li>
-    <li>Калкулатор на бала</li>
+  <h1>Справочникът на училищата е отворен</h1>
+  <p class="lede">Всички 289 училища в София, от които 49 с прием в 5. клас, с адрес, сайт и място на картата.</p>
+  <div class="actions">
+    <a class="btn gold" href="https://app.priem5.com/schools/">Виж училищата →</a>
+    <a class="btn line" href="https://app.priem5.com/schools/?intake=1">Само с прием в 5. клас</a>
+  </div>
+  <ul class="what" aria-label="Какво има и какво следва">
+    <li class="open"><span class="status">Отворено</span><b><a href="https://app.priem5.com/schools/">Училища</a></b><span>списък, карта, филтър по район и прием</span></li>
+    <li class="soon"><span class="stamp">Скоро</span><b>Състезания</b><span>кое състезание къде се признава</span></li>
+    <li class="soon"><span class="stamp">Скоро</span><b>Календар</b><span>срокове и напомняния по имейл</span></li>
+    <li class="soon"><span class="stamp">Скоро</span><b>Калкулатор на бала</b><span>бал по формулата на всяко училище</span></li>
   </ul>
 </main>
 <footer>Независим проект. Не е свързан с МОН, РУО или което и да е училище.</footer>
