@@ -19,7 +19,6 @@ Static HTML on GitHub Pages, deployed from `main` (root folder). A push to `main
 
 priem5.com is registered at Namecheap and uses Cloudflare nameservers. Cloudflare proxies to GitHub Pages with SSL mode Full and Always Use HTTPS. "Enforce HTTPS" in Pages settings stays off, because TLS is handled by Cloudflare.
 
-Brand sources, asset generation and the full runbook live in the private repo `n-dimitrov/priem5` (`docs/RUNBOOK.md`).
 
 ## Adding a page
 
