@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прием5 — отваряме скоро</title>
+<meta name="description" content="Прием5: независим помощник за родители на четвъртокласници в София, които кандидатстват за 5. клас. Училища, признати състезания, срокове, калкулатор на бала.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&display=swap">
+<style>
+:root{
+  --navy:#1C2C5B; --gold:#E8B64A; --ink:#141C33; --muted:#A9B1CC; --line:rgba(255,255,255,0.14);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:'Montserrat',system-ui,sans-serif; color:#fff; background:var(--navy);
+  display:flex; flex-direction:column; min-height:100vh;
+}
+main{
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:48px 16px; gap:40px;
+}
+.logo{width:min(420px,80vw); height:auto}
+.tagline{margin:0; font-size:clamp(16px,2.4vw,22px); font-weight:600; color:#D5DAEA; max-width:36ch; line-height:1.4}
+.stamp{
+  display:inline-block; padding:14px 28px; border:6px solid var(--gold); border-radius:14px;
+  color:var(--gold); font-weight:900; font-size:clamp(28px,7vw,72px); letter-spacing:0.04em; text-transform:uppercase;
+  line-height:1; transform:rotate(-7deg); position:relative;
+  box-shadow:0 0 0 3px var(--navy), 0 0 0 5px var(--gold);
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.15 1 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.15 1 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  mask-size:300px 300px; -webkit-mask-size:300px 300px;
+}
+.what{
+  margin:0; display:flex; flex-wrap:wrap; justify-content:center; gap:8px 12px; padding:0; list-style:none;
+  font-size:14px; font-weight:600; color:#D5DAEA;
+}
+.what li{padding:8px 14px; border:1px solid var(--line); border-radius:999px}
+footer{
+  padding:20px 16px 28px; text-align:center; font-size:13px; color:var(--muted); line-height:1.6;
+  border-top:1px solid var(--line);
+}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="logo-horizontal-white.svg" alt="Прием5" width="717" height="192">
+  <p class="tagline">Независим помощник за родители на четвъртокласници в София, които кандидатстват за 5. клас.</p>
+  <div class="stamp" role="img" aria-label="Отваряме скоро">Отваряме скоро</div>
+  <ul class="what" aria-label="Какво ще намерите тук">
+    <li>Училища с прием в 5. клас</li>
+    <li>Кое състезание къде се признава</li>
+    <li>Срокове и напомняния</li>
+    <li>Калкулатор на бала</li>
+  </ul>
+</main>
+<footer>Независим проект. Не е свързан с МОН, РУО или което и да е училище.</footer>
+</body>
+</html>
