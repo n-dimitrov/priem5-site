@@ -2,13 +2,13 @@
 
 The public site of Прием5: https://priem5.com
 
-Static HTML on GitHub Pages, deployed from `main` (root folder). A push to `main` is live in about a minute. Current state: the coming-soon page.
+Static HTML on GitHub Pages, deployed from `main` (root folder). A push to `main` is live in about a minute. Current state: the landing page with links into the app at app.priem5.com.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `index.html` | Coming-soon page with meta description, canonical, Open Graph, Twitter card and JSON-LD (Organization, WebSite) |
+| `index.html` | Landing page with meta description, canonical, Open Graph, Twitter card and JSON-LD (Organization, WebSite). Its „Следващ срок“ card is filled in the browser from the open API `https://app.priem5.com/api/catalog/v1/deadlines?limit=1` and stays hidden if that call fails |
 | `og-image.png` | 1200×630 social preview |
 | `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `logo-512.png` | Icons; `logo-512.png` is referenced by the JSON-LD |
 | `site.webmanifest`, `robots.txt`, `sitemap.xml` | Manifest and crawler files |
