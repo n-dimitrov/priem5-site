@@ -114,6 +114,25 @@ h1{margin:0; font-size:clamp(30px,5vw,44px); font-weight:900; line-height:1.1; m
   font-size:12px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; line-height:1.2; transform:rotate(-7deg); box-shadow:0 0 0 2px var(--navy), 0 0 0 3px var(--gold);
   mask-image:var(--ink); -webkit-mask-image:var(--ink); mask-size:120px 120px; -webkit-mask-size:120px 120px}
 @media (max-width:480px){.nd{padding:16px; gap:2px 14px} .nd .days{font-size:42px; min-width:56px} .nd .t{font-size:16px}}
+/* parent surveys on OurPulse: open until 1 Nov 2026, 23:59 Sofia; the script after the card hides it then */
+.pulse{position:relative; width:100%; max-width:640px; display:flex; flex-direction:column; gap:6px; padding:20px 22px; border:2px solid var(--gold); border-radius:14px;
+  background:rgba(232,182,74,0.08); text-align:left}
+.pulse .lbl{font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--gold)}
+.pulse .t{margin:0; font-size:18px; font-weight:800; line-height:1.25}
+.pulse .meta{margin:0; font-size:14px; color:#D5DAEA}
+.pulse .two{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:8px}
+.pulse .two a{display:grid; grid-template-columns:minmax(0,1fr) auto; align-content:center; gap:2px 14px; padding:12px 14px; border:1px solid rgba(255,255,255,0.35); border-radius:10px; color:#fff; text-decoration:none}
+.pulse .two a:hover{border-color:var(--gold); background:rgba(255,255,255,0.04)}
+.pulse .two a:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
+.pulse .two b{font-size:15px}
+.pulse .two span{font-size:13px; color:#D5DAEA}
+.pulse .two small{font-size:12px; font-weight:700; color:var(--gold)}
+.pulse .two img{grid-column:2; grid-row:1 / span 3; width:80px; height:80px; padding:4px; border-radius:6px; background:#fff}
+.pulse .stamp{position:absolute; top:-12px; right:14px; padding:3px 9px; border:3px solid var(--gold); border-radius:7px; color:var(--gold); background:var(--navy);
+  font-size:12px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; line-height:1.2; transform:rotate(-7deg); box-shadow:0 0 0 2px var(--navy), 0 0 0 3px var(--gold);
+  mask-image:var(--ink); -webkit-mask-image:var(--ink); mask-size:120px 120px; -webkit-mask-size:120px 120px}
+/* on a phone the parent is already on the phone: one column, no QR */
+@media (max-width:640px){.pulse{padding:18px 16px} .pulse .t{font-size:16px} .pulse .two, .pulse .two a{grid-template-columns:minmax(0,1fr)} .pulse .two small, .pulse .two img{display:none}}
 footer{
   padding:20px 16px 28px; text-align:center; font-size:13px; color:var(--muted); line-height:1.6;
   border-top:1px solid var(--line);
@@ -130,6 +149,20 @@ footer{
     <a class="btn line" href="https://app.priem5.com/schools/?intake=1">Само с прием в 5. клас</a>
   </div>
   <a class="nd" id="next-deadline" href="https://app.priem5.com/calendar/" hidden></a>
+  <section class="pulse" id="surveys" aria-labelledby="surveys-t">
+    <span class="stamp">До 1 ноември</span>
+    <div class="lbl">2 минути · анонимно</div>
+    <h2 class="t" id="surveys-t">Помогнете ни да направим Прием5 по-полезен</h2>
+    <p class="meta">Две кратки анкети. Изберете тази, която се отнася до вас.</p>
+    <div class="two">
+      <a href="https://ourpulse.click/s/SRDK0kGQ" target="_blank" rel="noopener"><b>Минахме през приема →</b><span>С какво се сблъскахте</span><small>или сканирайте с телефона</small><img src="qr-survey-past.svg" alt="" width="80" height="80"></a>
+      <a href="https://ourpulse.click/s/aYEOVmT2" target="_blank" rel="noopener"><b>Кандидатстваме тази година →</b><span>Какво ви тревожи</span><small>или сканирайте с телефона</small><img src="qr-survey-now.svg" alt="" width="80" height="80"></a>
+    </div>
+  </section>
+  <script>
+  // The surveys close on 1 Nov 2026, 23:59 Sofia time; hide the card from then on.
+  if (Date.now() >= Date.parse('2026-11-01T23:59:00+02:00')) document.getElementById('surveys').hidden = true;
+  </script>
   <ul class="what" aria-label="Какво има и какво следва">
     <li class="open"><span class="status">Отворено</span><b><a href="https://app.priem5.com/schools/">Училища</a></b><span>списък, карта, филтър по район и прием</span></li>
     <li class="open"><span class="status">Отворено</span><b><a href="https://app.priem5.com/competitions/">Състезания</a></b><span>кое състезание къде се признава</span></li>
