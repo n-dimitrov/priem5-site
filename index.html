@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Прием в 5. клас в София – Прием5</title>
-<meta name="description" content="Прием5: независим помощник за прием в 5. клас в София. Справочник на всички училища в София: прием в 5. клас, адрес и карта. Скоро: признати състезания, срокове и калкулатор на бала.">
+<meta name="description" content="Прием5: независим помощник за прием в 5. клас в София. Справочник на всички училища в София и календар с всички срокове до 5. клас. Скоро: признати състезания и калкулатор на бала.">
 <link rel="canonical" href="https://priem5.com/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
@@ -97,6 +97,23 @@ h1{margin:0; font-size:clamp(30px,5vw,44px); font-weight:900; line-height:1.1; m
   transform:rotate(-7deg); box-shadow:0 0 0 2px var(--navy), 0 0 0 3px var(--gold);
   mask-image:var(--ink); -webkit-mask-image:var(--ink); mask-size:120px 120px; -webkit-mask-size:120px 120px;
 }
+[hidden]{display:none!important}
+/* next deadline: filled from the open deadlines API of app.priem5.com; stays hidden if it cannot load */
+.nd{position:relative; width:100%; max-width:640px; display:grid; grid-template-columns:auto minmax(0,1fr); gap:2px 20px; align-items:center;
+  padding:18px 22px; border:2px solid var(--gold); border-radius:14px; background:rgba(255,255,255,0.04); color:#fff; text-decoration:none; text-align:left}
+.nd:hover{background:rgba(255,255,255,0.08)}
+.nd:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
+.nd .days{grid-row:span 3; font-size:52px; font-weight:900; line-height:1; color:var(--gold); text-align:center; min-width:72px; font-variant-numeric:tabular-nums}
+.nd .days small{display:block; font-size:12px; font-weight:800; color:#D5DAEA; margin-top:4px}
+.nd .approx{font-size:.6em; vertical-align:.25em; margin-right:2px; color:#D5DAEA}
+.nd .lbl{font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--gold)}
+.nd .t{font-size:18px; font-weight:800; line-height:1.25}
+.nd .meta{font-size:14px; color:#D5DAEA}
+.nd .go{font-weight:800; color:var(--gold); white-space:nowrap}
+.nd .stamp{position:absolute; top:-12px; right:14px; padding:3px 9px; border:3px solid var(--gold); border-radius:7px; color:var(--gold); background:var(--navy);
+  font-size:12px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; line-height:1.2; transform:rotate(-7deg); box-shadow:0 0 0 2px var(--navy), 0 0 0 3px var(--gold);
+  mask-image:var(--ink); -webkit-mask-image:var(--ink); mask-size:120px 120px; -webkit-mask-size:120px 120px}
+@media (max-width:480px){.nd{padding:16px; gap:2px 14px} .nd .days{font-size:42px; min-width:56px} .nd .t{font-size:16px}}
 footer{
   padding:20px 16px 28px; text-align:center; font-size:13px; color:var(--muted); line-height:1.6;
   border-top:1px solid var(--line);
@@ -112,13 +129,44 @@ footer{
     <a class="btn gold" href="https://app.priem5.com/schools/">Виж училищата →</a>
     <a class="btn line" href="https://app.priem5.com/schools/?intake=1">Само с прием в 5. клас</a>
   </div>
+  <a class="nd" id="next-deadline" href="https://app.priem5.com/calendar/" hidden></a>
   <ul class="what" aria-label="Какво има и какво следва">
     <li class="open"><span class="status">Отворено</span><b><a href="https://app.priem5.com/schools/">Училища</a></b><span>списък, карта, филтър по район и прием</span></li>
     <li class="soon"><span class="stamp">Скоро</span><b>Състезания</b><span>кое състезание къде се признава</span></li>
-    <li class="soon"><span class="stamp">Скоро</span><b>Календар</b><span>срокове и напомняния по имейл</span></li>
+    <li class="open"><span class="status">Отворено</span><b><a href="https://app.priem5.com/calendar/">Календар</a></b><span>всички срокове до 5. клас с обратно броене</span></li>
     <li class="soon"><span class="stamp">Скоро</span><b>Калкулатор на бала</b><span>бал по формулата на всяко училище</span></li>
   </ul>
 </main>
+<script>
+// Next deadline from the open API; on any error the card stays hidden.
+(async () => {
+  const el = document.getElementById('next-deadline');
+  const M = ['януари','февруари','март','април','май','юни','юли','август','септември','октомври','ноември','декември'];
+  const WD = ['неделя','понеделник','вторник','сряда','четвъртък','петък','събота'];
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Sofia' }).format(new Date());
+  const dn = s => Math.round(Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10)) / 864e5);
+  const at = s => new Date(s + 'T12:00:00Z');
+  try {
+    const ctl = new AbortController(); setTimeout(() => ctl.abort(), 5000);
+    const res = await fetch('https://app.priem5.com/api/catalog/v1/deadlines?limit=1', { signal: ctl.signal });
+    if (!res.ok) return;
+    const d = (await res.json()).data?.[0];
+    if (!d) return;
+    const n = dn(d.date) - dn(today), running = n < 0 && d.end_date && dn(d.end_date) >= dn(today);
+    const exp = d.date_status === 'expected', a = at(d.date);
+    const when = d.end_date
+      ? `${a.getUTCDate()}–${at(d.end_date).getUTCDate()} ${M[at(d.end_date).getUTCMonth()]}`
+      : `${WD[a.getUTCDay()]}, ${a.getUTCDate()} ${M[a.getUTCMonth()]}${d.time ? `, ${d.time} ч.` : ''}`;
+    el.href = d.page_url;
+    el.innerHTML = `${exp ? '<span class="stamp">Очаквана дата</span>' : ''}
+      <div class="days">${running ? 'сега<small>тече</small>' : `${exp ? '<span class="approx">≈</span>' : ''}${Math.max(n, 0)}<small>${n === 1 ? 'ден' : 'дни'}</small>`}</div>
+      <div class="lbl">Следващ срок</div><div class="t">${esc(d.title)}</div>
+      <div class="meta">${when} · <span class="go">Всички срокове →</span></div>`;
+    el.hidden = false;
+  } catch { /* offline or API down: no card */ }
+})();
+</script>
 <footer>Независим проект. Не е свързан с МОН, РУО или което и да е училище.</footer>
 </body>
 </html>
