@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://priem5.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Прием5 – училища, състезания, календар и калкулатор на бала за прием в 5. клас в София. Калкулаторът е отворен">
+<meta property="og:image:alt" content="Прием5 – училища, състезания, календар и калкулатор на бала за прием в 5. клас в София">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Прием5 – прием в 5. клас в София">
 <meta name="twitter:description" content="Училища, признати състезания, срокове и калкулатор на бала за прием в 5. клас в София. Отворени са училищата, състезанията, календарът и калкулаторът.">
@@ -103,6 +103,7 @@ h1{margin:0; font-size:clamp(30px,5vw,44px); font-weight:900; line-height:1.1; m
 .nd:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
 .nd .days{grid-row:span 3; font-size:52px; font-weight:900; line-height:1; color:var(--gold); text-align:center; min-width:72px; font-variant-numeric:tabular-nums}
 .nd .days small{display:block; font-size:12px; font-weight:800; color:#D5DAEA; margin-top:4px}
+.nd .days.word{font-size:34px; letter-spacing:-.01em}   /* „Днес“, „Утре“ instead of „0 дни“, „1 ден“, as on the calendar */
 .nd .approx{font-size:.6em; vertical-align:.25em; margin-right:2px; color:#D5DAEA}
 .nd .lbl{font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--gold)}
 .nd .t{font-size:18px; font-weight:800; line-height:1.25}
@@ -111,7 +112,7 @@ h1{margin:0; font-size:clamp(30px,5vw,44px); font-weight:900; line-height:1.1; m
 .nd .stamp{position:absolute; top:-12px; right:14px; padding:3px 9px; border:3px solid var(--gold); border-radius:7px; color:var(--gold); background:var(--navy);
   font-size:12px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; line-height:1.2; transform:rotate(-7deg); box-shadow:0 0 0 2px var(--navy), 0 0 0 3px var(--gold);
   mask-image:var(--ink); -webkit-mask-image:var(--ink); mask-size:120px 120px; -webkit-mask-size:120px 120px}
-@media (max-width:480px){.nd{padding:16px; gap:2px 14px} .nd .days{font-size:42px; min-width:56px} .nd .t{font-size:16px}}
+@media (max-width:480px){.nd{padding:16px; gap:2px 14px} .nd .days{font-size:42px; min-width:56px} .nd .days.word{font-size:26px} .nd .t{font-size:16px}}
 footer{
   padding:20px 16px 28px; text-align:center; font-size:13px; color:var(--muted); line-height:1.6;
   border-top:1px solid var(--line);
@@ -158,7 +159,7 @@ footer{
       : `${WD[a.getUTCDay()]}, ${a.getUTCDate()} ${M[a.getUTCMonth()]}${d.time ? `, ${d.time} ч.` : ''}`;
     el.href = d.page_url;
     el.innerHTML = `${exp ? '<span class="stamp">Очаквана дата</span>' : ''}
-      <div class="days">${running ? 'сега<small>тече</small>' : `${exp ? '<span class="approx">≈</span>' : ''}${Math.max(n, 0)}<small>${n === 1 ? 'ден' : 'дни'}</small>`}</div>
+      <div class="days${!running && n <= 1 ? ' word' : ''}">${running ? 'сега<small>тече</small>' : `${exp ? '<span class="approx">≈</span>' : ''}${n <= 0 ? 'Днес' : n === 1 ? 'Утре' : `${n}<small>дни</small>`}`}</div>
       <div class="lbl">Следващ срок</div><div class="t">${esc(d.title)}</div>
       <div class="meta">${when} · <span class="go">Всички срокове →</span></div>`;
     el.hidden = false;
